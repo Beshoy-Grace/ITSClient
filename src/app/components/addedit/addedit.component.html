@@ -1,0 +1,24 @@
+<hr>
+<div class="row  mt-5">
+  <div class="col-6">
+    <form  [formGroup]="addEditForm" (ngSubmit)="onSubmit()">
+      <div class=" mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">Add / Edit</h1>
+      </div>
+
+      <app-input-text formControlName="title" [label]="'Title'" class="m-5"></app-input-text>
+      <app-input-text formControlName="description" [label]="'Description'"></app-input-text>
+
+      <ul class="text-danger list-unstyled" *ngIf="errors">
+          <li *ngFor="let error of errors">
+              {{error}}
+          </li>
+      </ul>
+
+      <button class="btn  btn-primary btn-block col-3 mt-2" type="submit">Save</button>
+    </form>
+  </div>
+  
+</div>
+
+

@@ -1,0 +1,38 @@
+
+<div class="container">
+
+  <button mat-raised-button class="ml-55" (click)="addItem()">
+    ADD Step
+  </button>
+
+  <form>
+    <mat-horizontal-stepper >
+      <mat-step  *ngFor="let stepNumber of stepNo; let i = index">
+        <ng-template matStepLabel>Step {{i + 1}} <span *ngIf="i != 0"  (click)="deleteItem(stepNumber.id)" class="ml-2">---</span></ng-template>
+       <div class="row">
+         <div class="col-9" *ngFor="let item of Items"   >
+            <app-item [item]="item" *ngIf="item.step == stepNumber.id" (itemNumber)="getItemNumber($event)" (isDelete)="callItems($event)"></app-item>
+          </div>
+          <div class="col-3">
+            <button mat-raised-button (click)="addItemTiDB()">
+            add item 
+          </button>
+        </div>
+
+
+       </div>
+
+        <addedit [isIDItem] = "IDitem" (IsEdit)="Edit($event)" [addEditForm] = "addEditForm" [step] ="stepNumber.id"></addedit>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </form>
+
+
+
+
+
+
